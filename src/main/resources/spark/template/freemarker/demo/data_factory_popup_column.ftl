@@ -107,9 +107,6 @@
                     } else {
                         updateData($(this), itemData, curVarType);
                         showColDefineDialog(itemData, type);
-                        if (primaryVarExisted[itemData.icasa] !== undefined) {
-                            primaryVarExisted[itemData.icasa] = true;
-                        }
                     }
                 }
             }
@@ -135,8 +132,8 @@
             colHeaderInput.val(itemData.column_header);
             dialog.find("[name=other_options]").each(function () {
                 $(this).val([]);
-                if (itemData.formula) {
-                    $(this).find("option[value='" + itemData.formula + "']").prop("selected", true);
+                if (itemData.formula && itemData.formula.function === "fill_with_previous") {
+                    $(this).find("option[value='" + itemData.formula.function + "']").prop("selected", true);
                 }
                 chosen_init_target($(this));
             });
@@ -679,11 +676,11 @@
         }
         if (othOpts.length > 0) {
             if (othOpts.includes("fill_with_previous")) {
-                itemData.formula = "fill_with_previous";
-            } else if (itemData.formula === "fill_with_previous") {
+                itemData.formula = {"function" : "fill_with_previous"};
+            } else if (itemData.formula && itemData.formula.function === "fill_with_previous") {
                 delete itemData.formula;
             }
-        } else {
+        } else if (itemData.formula && itemData.formula.function === "fill_with_previous") {
             delete itemData.formula;
         }
     }

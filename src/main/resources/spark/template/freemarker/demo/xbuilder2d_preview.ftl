@@ -44,8 +44,12 @@
                 "<hr></div>");
     }
     
-    function getFinalJson() {
-        return JSON.stringify(getFinalData());
+    function getFinalJson(compressFlg) {
+        if (compressFlg) {
+            return JSON.stringify(getFinalData());
+        } else {
+            return JSON.stringify(getFinalData(), 2, 2);
+        }
     }
     
     function getFinalData() {
@@ -106,7 +110,7 @@
     function updateDssatPreview() {
         $('#dssat_preview_text').html('Loading...');
         $.post("/translator/dssat_exp",
-            {data : getFinalJson()},
+            {data : getFinalJson(true)},
             function (xfile) {
                 $('#dssat_preview_text').html(xfile);
             }
@@ -119,12 +123,12 @@
         <legend>
             Experiment Data&nbsp;&nbsp;&nbsp;
             <div class="btn-group slider">
-                <button id="json_swc_btn" type="button" class="btn btn-primary" onclick="switchPreviewViewType(this);">&nbsp;&nbsp;JSON&nbsp;&nbsp;</button>
-                <button id="dssat_swc_btn" type="button" class="btn btn-default" onclick="switchPreviewViewType(this);">DSSAT</button>
+                <button id="dssat_swc_btn" type="button" class="btn btn-primary" onclick="switchPreviewViewType(this);">DSSAT</button>
+                <button id="json_swc_btn" type="button" class="btn btn-default" onclick="switchPreviewViewType(this);">&nbsp;&nbsp;JSON&nbsp;&nbsp;</button>
             </div>
         </legend>
-        <div id="json_preview" class="form-group col-sm-12"></div>
-        <div id="dssat_preview" class="form-group col-sm-12" hidden><textarea class="form-control" rows="25" id="dssat_preview_text" style="font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;" readonly></textarea></div>
+        <div id="json_preview" class="form-group col-sm-12" hidden></div>
+        <div id="dssat_preview" class="form-group col-sm-12"><textarea class="form-control" rows="25" id="dssat_preview_text" style="font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;" readonly></textarea></div>
 
     </fieldset>
 </div>

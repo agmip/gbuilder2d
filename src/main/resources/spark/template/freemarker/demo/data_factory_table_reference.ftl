@@ -449,11 +449,6 @@
     }
     
     function detectReferences(defListDiv) {
-        console.log(primaryVarExisted);
-        if (!primaryVarExisted.EXNAME) {
-            // TODO give warning message and lead to the general info
-//            showPrimaryTableDialog();
-        }
         confirmBox("This process will overwrite the exisiting reference configuration.", function() {
             for (let fileName in templates) {
                 for (let sheetName in templates[fileName]) {
@@ -601,11 +596,8 @@
     
     function getTableRanks() {
         let ret = [];
-        // TODO check if primary table is set
-        // TODO if set, then mark those tables before loop
         for (let fileName in templates) {
             for (let sheetName in templates[fileName]) {
-                // TODO if primary tables are set, then skip those tables
                 let catObj = getTableCategory(templates[fileName][sheetName].mappings);
                 catObj.file = fileName;
                 catObj.sheet = sheetName;
@@ -615,7 +607,6 @@
                 ret[catObj.rank].push(catObj);
             }
         }
-        console.log(ret);
         return ret;
         
     }

@@ -118,20 +118,12 @@ public class Main {
         // Set up routes
         get("/", (Request request, Response response) -> {
             HashMap data = new HashMap();
-            data.put("culMetaList", DataUtil.getCulMetaDataList());
-            data.put("soils", DataUtil.getSoilDataList());
-            data.put("weathers", DataUtil.getWthDataList());
+            data.put("icasaMgnVarMap", DataUtil.getICASAMgnVarMap());
+            data.put("icasaObvVarMap", DataUtil.getICASAObvVarMap());
             data.put("icasaMgnCodeMap", DataUtil.getICASAMgnCodeMap());
-            return new FreeMarkerEngine().render(new ModelAndView(data, Path.Template.Demo.XBUILDER2D));
-                });
-        
-        get(Path.Web.Demo.GBUILDER1D, (Request request, Response response) -> {
-            return new FreeMarkerEngine().render(new ModelAndView(new HashMap(), Path.Template.Demo.GBUILDER1D));
-                });
-        
-        get(Path.Web.Demo.GBUILDER2D, (Request request, Response response) -> {
-            return new FreeMarkerEngine().render(new ModelAndView(new HashMap(), Path.Template.Demo.GBUILDER2D));
-                });
+            data.put("culMetaList", DataUtil.getICASACropCodeMap());
+            return new FreeMarkerEngine().render(new ModelAndView(data, Path.Template.Demo.DATA_FACTORY));
+        });
         
         get(Path.Web.Demo.UNIT_MASTER, (Request request, Response response) -> {
             HashMap data = new HashMap();
@@ -157,15 +149,6 @@ public class Main {
             return UnitUtil.convertUnit(unitFrom, unitTo, valueFrom).toJSONString();
                 });
         
-        get(Path.Web.Demo.XBUILDER2D, (Request request, Response response) -> {
-            HashMap data = new HashMap();
-            data.put("culMetaList", DataUtil.getCulMetaDataList());
-            data.put("soils", DataUtil.getSoilDataList());
-            data.put("weathers", DataUtil.getWthDataList());
-            data.put("icasaMgnCodeMap", DataUtil.getICASAMgnCodeMap());
-            return new FreeMarkerEngine().render(new ModelAndView(data, Path.Template.Demo.XBUILDER2D));
-                });
-        
         get(Path.Web.Demo.METALIST, (Request request, Response response) -> {
             HashMap data = new HashMap();
             data.put("metalist", MetaDataDAO.list());
@@ -175,11 +158,6 @@ public class Main {
         get(Path.Web.Demo.XML_EDITOR, (Request request, Response response) -> {
             HashMap data = new HashMap();
             return new FreeMarkerEngine().render(new ModelAndView(data, Path.Template.Demo.XML_EDITOR));
-                });
-        
-        get(Path.Web.Demo.DATA_FACTORY, (Request request, Response response) -> {
-            response.redirect(Path.Web.Demo.VMAPPER);
-            return "Redirect to " + Path.Web.Demo.VMAPPER;
                 });
         
         get(Path.Web.Demo.VMAPPER, (Request request, Response response) -> {

@@ -3,11 +3,8 @@ package org.dssat.tool.gbuilder2d.util;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import lombok.*;
 
 public class Path {
@@ -19,6 +16,7 @@ public class Path {
         @Getter public static final String LOGIN = "/login";
         @Getter public static final String LOGOUT = "/logout";
         @Getter public static final String UPLOAD = "/upload";
+        @Getter public static final String VMAPPER = "https://vmapper.herokuapp.com/tools";
         
         public static class Demo {
             private static final String PACKAGE = "/" + Demo.class.getSimpleName().toLowerCase();
@@ -32,6 +30,8 @@ public class Path {
             public static final String UNIT_MASTER = PACKAGE + "/unit";
             public static final String DATA_FACTORY = PACKAGE + "/data_factory";
             public static final String VMAPPER = PACKAGE + "/vmapper";
+            public static final String UNIT_MASTER_NEW = Web.VMAPPER + "/unit";
+            public static final String VMAPPER_NEW = Web.VMAPPER + "/vmapper";
         }
         
         public static class Data {
@@ -87,6 +87,7 @@ public class Path {
         public final static String ICASA_DIR = Config.get("ICASA_DIR"); //"ICASA";
         public final static String ICASA_CROP_CODE = Config.get("ICASA_CROP_CODE"); //"Crop_codes.csv";
         public final static String ICASA_MGN_CODE = Config.get("ICASA_MGN_CODE"); //"Management_codes.csv";
+        public final static String ICASA_OTH_CODE = Config.get("ICASA_OTH_CODE"); //"Other_codes.csv";
         public final static String ICASA_MGN_VAR = Config.get("ICASA_MGN_VAR"); //"Management_info.csv";
         public final static String ICASA_OBV_VAR = Config.get("ICASA_OBV_VAR"); //"Measured_data.csv";
         public final static String DSSAT_VERSION = Config.get("DSSAT_VERSION"); //"47";
@@ -129,6 +130,11 @@ public class Path {
             return ret;
         }
         
+        public static File getICASAOthCodeFile() {
+            File ret = Paths.get(DATA_DIR, ICASA_DIR, ICASA_OTH_CODE).toFile();
+            return ret;
+        }
+        
         public static File getICASAMgnVarFile() {
             File ret = Paths.get(DATA_DIR, ICASA_DIR, ICASA_MGN_VAR).toFile();
             return ret;
@@ -168,6 +174,7 @@ public class Path {
             ret.put("CULTIVAR_LIST", "crop_list.csv");
             ret.put("ICASA_DIR", "ICASA");
             ret.put("ICASA_MGN_CODE", "Management_codes.csv");
+            ret.put("ICASA_OTH_CODE", "Other_codes.csv");
             ret.put("ICASA_MGN_VAR", "Management_info.csv");
             ret.put("ICASA_OBV_VAR", "Measured_data.csv");
             try {

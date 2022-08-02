@@ -1,8 +1,0 @@
-1, Read sheet by default order, and put them into a hash structure for cache
-2, when all sheet got read, start to combine them
-2.1, try to start from a sheet with look up key.
-3, When detect look up key in the sheet, jump to read look up target sheet to make sure target is available
-4, When detect primary key, check if it is repeatable or not, which will decide if we should use list or object to hold data
-5, If a sheet is ready loaded by jumping, then skip it.
-
-

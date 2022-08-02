@@ -33,7 +33,7 @@ function drawSWV2DPlot(plotVar, plotVarName, data, containerId, cell, style, cha
     if (obvSubdaily !== undefined) {
         for (var i = 0; i < obvSubdaily.length; i++) {
             if (obvSubdaily[i].TS < subdaily[end - 1].TS) {
-                plotDataObv.push([obvSubdaily[i].TS, obvSubdaily[i][plotVar][cell.row][cell.col]]);
+                plotDataObv.push([obvSubdaily[i].TS.getTime(), obvSubdaily[i][plotVar][cell.row][cell.col]]);
             }
         }
 //        if (data["obv"]["max"][plotVar][cell.row][cell.col]) {
@@ -42,10 +42,10 @@ function drawSWV2DPlot(plotVar, plotVarName, data, containerId, cell, style, cha
 //        if (data["obv"]["min"][plotVar][cell.row][cell.col]) {
 //            min = Math.min(min, data["obv"]["min"][plotVar][cell.row][cell.col]);
 //        }
-        if (data["obv"]["maxAll"][plotVar]) {
+        if (!isNaN(data["obv"]["maxAll"][plotVar])) {
             max = Math.max(max, data["obv"]["maxAll"][plotVar]);
         }
-        if (data["obv"]["minAll"][plotVar]) {
+        if (!isNaN(data["obv"]["minAll"][plotVar])) {
             min = Math.min(min, data["obv"]["minAll"][plotVar]);
         }
     }

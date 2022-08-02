@@ -70,7 +70,7 @@ function drawHeatMapPlot(plotTitle, plotValTitle, plotData, max, min, soilProfil
             gridLineWidth:0,
             reversed: true,
             title: {
-                text: 'Central line of Bed',
+                text: 'Centerline of Bed',
                 align: 'high'
             }
         },{
@@ -80,7 +80,7 @@ function drawHeatMapPlot(plotTitle, plotValTitle, plotData, max, min, soilProfil
             }
         },{
             title: {
-                text: 'Central line of Farrow',
+                text: 'Centerline of Farrow',
                 align: 'high'
             },
             opposite: true

@@ -88,7 +88,7 @@
                 <#list icasaMgnCodeMap?keys as key>
                 ${key}:{
                 <#list icasaMgnCodeMap[key]?keys as code>
-                    ${code?js_string} : "${icasaMgnCodeMap[key][code]?js_string}"<#sep>,</#sep>
+                    "${code?js_string}" : "${icasaMgnCodeMap[key][code]?js_string}"<#sep>,</#sep>
                 </#list>
                 }<#sep>,</#sep>
                 </#list>

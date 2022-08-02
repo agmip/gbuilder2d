@@ -28,6 +28,7 @@
             let fileColors = {};
             let virColCnt = {};
             let lastHeaderRow = {};
+            let primaryVarExisted = {EXNAME: false, SOIL_ID: false, WST_ID: false};
             const eventDateMapping = {
                 def : {
                     "planting" : "pdate",
@@ -485,6 +486,7 @@
                     virColCnt[files[i].name] = {};
                     lastHeaderRow[files[i].name] = {};
                 }
+                primaryVarExisted = {EXNAME: false, SOIL_ID: false, WST_ID: false};
                 let idx = 0;
                 userVarMap = {};
                 workbooks = {};
@@ -823,7 +825,7 @@
                         if (sheetDef.header_row) {
                             headers = roa[sheetDef.header_row - 1];
                             lastHeaderRow[fileName][sheetName] = sheetDef.header_row;
-                            for (let i = 0; i < headers.length; i++) {
+                            for (let i = 0; i < Math.max(headers.length, sheetDef.mappings.length); i++) {
                                 if (!headers[i]) {
                                     headers[i] = "";
                                 }
@@ -879,6 +881,9 @@
                                     } else if (icasaVarMap.getDefinition(headerDef.column_header)) {
                                         headerDef.icasa = headerDef.column_header;
                                     }
+                                }
+                                if (headerDef.icasa && primaryVarExisted[headerDef.icasa] !== undefined) {
+                                    primaryVarExisted[headerDef.icasa] = true;
                                 }
                                 let icasa_unit = icasaVarMap.getUnit(headerDef.icasa);
                                 if (!headerDef.icasa) {
@@ -2323,6 +2328,9 @@
                                 mappings[colIdx - 1] = sc2Mappings[j];
 
 //                                        mappings[sc2Mappings[j].column_index - 1] = sc2Mappings[j];
+                                if (sc2Mappings[j].icasa && primaryVarExisted[sc2Mappings[j].icasa] !== undefined) {
+                                    primaryVarExisted[sc2Mappings[j].icasa] = true;
+                                }
                                 if (sc2Mappings[j].formula_info) {
                                     if (sc2Mappings[j].formula_info.virtual_val_fixed || sc2Mappings[j].formula_info.virtual_val_fixed === 0) {
                                         sc2Mappings[j].value = sc2Mappings[j].formula_info.virtual_val_fixed;

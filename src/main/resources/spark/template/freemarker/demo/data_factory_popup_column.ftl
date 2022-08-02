@@ -107,6 +107,9 @@
                     } else {
                         updateData($(this), itemData, curVarType);
                         showColDefineDialog(itemData, type);
+                        if (primaryVarExisted[itemData.icasa] !== undefined) {
+                            primaryVarExisted[itemData.icasa] = true;
+                        }
                     }
                 }
             }
@@ -170,7 +173,7 @@
                                 function (jsonStr) {
                                     let result = JSON.parse(jsonStr);
                                     if (result.status !== "0") {
-                                        subDiv.find("[name='unit_validate_result']").html("Incompatiable unit");
+                                        subDiv.find("[name='unit_validate_result']").html("Incompatible unit");
                                         itemData.err_msg = "Please fix source unit expression";
                                     } else {
                                         subDiv.find("[name='unit_validate_result']").html("");
@@ -339,7 +342,7 @@
                             function (jsonStr) {
                                 let unitInfo = JSON.parse(jsonStr);
                                 if (unitInfo.message === "undefined unit expression" && isNumericUnit(unit)) {
-                                    subDiv.find("[name='unit_validate_result']").html("Incompatiable unit");
+                                    subDiv.find("[name='unit_validate_result']").html("Incompatible unit");
                                     itemData.err_msg = "Please fix source unit expression";
                                 } else {
                                     subDiv.find("[name='unit_validate_result']").html("");

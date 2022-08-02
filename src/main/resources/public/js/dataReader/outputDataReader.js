@@ -200,7 +200,7 @@ function readSubDailyOutput(rawData) {
                     if (max[titles[j]][row - 1][col - 1] === undefined || max[titles[j]][row - 1][col - 1] < val) {
                         max[titles[j]][row - 1][col - 1] = val;
                     }
-                    if (!maxAll[titles[j]] || maxAll[titles[j]] < val) {
+                    if (!isNaN(maxAll[titles[j]]) || maxAll[titles[j]] < val) {
                         maxAll[titles[j]] = val;
                     }
                     while (min[titles[j]].length < row) {
@@ -209,7 +209,7 @@ function readSubDailyOutput(rawData) {
                     if (min[titles[j]][row - 1][col - 1] === undefined || min[titles[j]][row - 1][col - 1] > val) {
                         min[titles[j]][row - 1][col - 1] = val;
                     }
-                    if (!minAll[titles[j]] || minAll[titles[j]] > val) {
+                    if (!isNaN(minAll[titles[j]]) || minAll[titles[j]] > val) {
                         minAll[titles[j]] = val;
                     }
                 }
@@ -310,7 +310,7 @@ function readSubDailyObv(rawData) {
                     if (max[valName][row - 1][col - 1] === undefined || max[valName][row - 1][col - 1] < val) {
                         max[valName][row - 1][col - 1] = val;
                     }
-                    if (!maxAll[valName] || maxAll[valName] < val) {
+                    if (!isNaN(maxAll[valName]) || maxAll[valName] < val) {
                         maxAll[valName] = val;
                     }
                     while (min[valName].length < row) {
@@ -319,7 +319,7 @@ function readSubDailyObv(rawData) {
                     if (min[valName][row - 1][col - 1] === undefined || min[valName][row - 1][col - 1] > val) {
                         min[valName][row - 1][col - 1] = val;
                     }
-                    if (!minAll[valName] || minAll[valName] > val) {
+                    if (!isNaN(minAll[valName]) || minAll[valName] > val) {
                         minAll[valName] = val;
                     }
                 }

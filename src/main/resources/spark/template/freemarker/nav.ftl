@@ -4,7 +4,7 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBar">
               <span class="glyphicon glyphicon-menu-hamburger"></span>
             </button>
-            <a class="navbar-brand navbar-static-top">AgMIP</a>
+            <a class="navbar-brand navbar-static-top"><img src="/images/LOGO.png" height="125%" alt="Decision Support System for Agrotechnology Transfer"></a>
         </div>
         <div class="collapse navbar-collapse" id="navBar">
             <ul class="nav navbar-nav">
@@ -28,13 +28,13 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-briefcase"></span> Data Tools <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <!--<li><a href="/demo/xbuilder2d"><span class="glyphicon glyphicon-edit"></span> XBuilder 2D</a></li>
+                        <li><a href="/demo/xbuilder2d"><span class="glyphicon glyphicon-edit"></span> XBuilder 2D</a></li>
                         <li><a href="/demo/gbuilder1d"><span class="glyphicon glyphicon-picture"></span> GBuilder 1D</a></li>
                         <li><a href="/demo/gbuilder2d"><span class="glyphicon glyphicon-picture"></span> GBuilder 2D</a></li>
-                        <li><a href="/demo/xmleditor"><span class="glyphicon glyphicon-edit"></span> XML Editor</a></li>-->
+                        <li><a href="/demo/xmleditor"><span class="glyphicon glyphicon-edit"></span> XML Editor</a></li>
                         <li><a href="/demo/vmapper"><span class="glyphicon glyphicon-road"></span> VMapper</a></li>
                         <li><a href="/demo/unit"><span class="glyphicon glyphicon-edit"></span> Unit Master</a></li>
-                        <!--<li><a href="#" onClick="window.open('https://dssat2d-plot-demo.herokuapp.com/')"><span class="glyphicon glyphicon-send"></span> Distributable Plot</a></li>-->
+                        <li><a href="#" onClick="window.open('https://dssat2d-plot-demo.herokuapp.com/')"><span class="glyphicon glyphicon-send"></span> Distributable Plot</a></li>
                     </ul>
                 </li>
     <!--            <li class="dropdown">
